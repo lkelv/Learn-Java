@@ -1,0 +1,44 @@
+Index: W1[post] Basics of Java/My Attempt/src/SmartHomeDriver.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class SmartHomeDriver {\r\n    // test\r\n    public static void main(String[] args) {\r\n\r\n        System.out.println(\"Welcome to the Smart Home System\");\r\n\r\n        SmartBulb bulb1 = new SmartBulb();\r\n\r\n        bulb1.turnOn();\r\n        bulb1.setColour(\"red\");\r\n\r\n        SmartBulb bulb2 = new SmartBulb(false, \"yellow\");\r\n\r\n    }\r\n\r\n}\r\n
+===================================================================
+diff --git a/W1[post] Basics of Java/My Attempt/src/SmartHomeDriver.java b/W1[post] Basics of Java/My Attempt/src/SmartHomeDriver.java
+--- a/W1[post] Basics of Java/My Attempt/src/SmartHomeDriver.java	(revision f9a9d28d1a42663a7ca75e24a570da11e507a8dd)
++++ b/W1[post] Basics of Java/My Attempt/src/SmartHomeDriver.java	(date 1772618340548)
+@@ -11,6 +11,18 @@
+ 
+         SmartBulb bulb2 = new SmartBulb(false, "yellow");
+ 
++        SmartBulb bulbArray[] = new SmartBulb[2];
++        bulbArray[0] = bulb1;
++        bulbArray[1] = bulb2;
++
++        // Display bulb data
++        System.out.println("Bulb 1 is on: " + bulbArray[0].getStatus());
++        System.out.println("Bulb 1 is on: " + bulbArray[1].getStatus());
++
++        for (int i=0; i<bulbArray.length; i++){
++            System.out.println("Bulb " + (i+1) + " is on: " + bulbArray[i].getStatus());
++        }
++
+     }
+ 
+ }
+Index: W1[post] Basics of Java/My Attempt/src/SmartBulb.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class SmartBulb {\n\n    //private attributes\n    private boolean status;\n    private String colour;\n    private double consumptionToday; //in Watts\n\n\n    //constructor\n    public SmartBulb(){\n    }\n\n    //constructor overloading\n    public SmartBulb(boolean _status, String _colour){\n        this.status = _status;\n        this.colour = _colour;\n    }\n\n    //getters and setters\n    public boolean isStatus() {\n        return status;\n    }\n\n    public void turnOn() {\n        this.status = true;\n    }\n\n    public void turnOff() {\n        this.status = false;\n    }\n\n    public String getColour() {\n        return colour;\n    }\n\n    public void setColour(String colour) {\n        this.colour = colour;\n    }\n\n    public double getConsumptionToday() {\n        return consumptionToday;\n    }\n\n    public void setConsumptionToday(double consumptionToday) {\n        this.consumptionToday = consumptionToday;\n    }\n\n\n\n}\n
+===================================================================
+diff --git a/W1[post] Basics of Java/My Attempt/src/SmartBulb.java b/W1[post] Basics of Java/My Attempt/src/SmartBulb.java
+--- a/W1[post] Basics of Java/My Attempt/src/SmartBulb.java	(revision f9a9d28d1a42663a7ca75e24a570da11e507a8dd)
++++ b/W1[post] Basics of Java/My Attempt/src/SmartBulb.java	(date 1772618249412)
+@@ -17,7 +17,7 @@
+     }
+ 
+     //getters and setters
+-    public boolean isStatus() {
++    public boolean getStatus() {
+         return status;
+     }
+ 
