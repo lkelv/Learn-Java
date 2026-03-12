@@ -17,6 +17,7 @@ public class SmartSwitch {
 
 
 
+
     //getters and setters
     public String getIpAddress() {
         return ipAddress;
@@ -80,7 +81,14 @@ public class SmartSwitch {
         return totalConsumption;
     }
 
-
+    public void display() {
+        System.out.println("SmartSwitch  at " + this.getIpAddress() + " is on: " + this.getStatus() + " Today's consumption: " + this.getConsumptionToday());
+        int i = 0;
+        for (SmartBulb smartBulb : this.getBulbs()) {
+            i++;
+            System.out.println("Bulb " + i + " at " + smartBulb.getIpAddress() + " is on: " + smartBulb.getStatus() + ". Colour:" + smartBulb.getColour() + ". Today's consumption: " + smartBulb.getConsumptionToday());
+        }
+    }
 
 
 }

@@ -62,4 +62,8 @@ public class SmartTV {
 
     }
 
+    public void display() {
+        System.out.println("Smart TV at " + this.getIpAddress() + " is on: " + this.getStatus() + ". Today's consumption: " + this.getConsumptionToday());
+    }
+
 }
