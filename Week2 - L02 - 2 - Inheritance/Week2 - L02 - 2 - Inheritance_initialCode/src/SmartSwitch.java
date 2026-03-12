@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class SmartSwitch {
+public class SmartSwitch extends SmartDevice {
 
     //private attributes
     private String ipAddress;
@@ -10,8 +10,7 @@ public class SmartSwitch {
 
     //constructor
     public SmartSwitch(String _ipAddress, boolean _status) {
-        this.ipAddress = _ipAddress;
-        this.status = _status;
+        super(_ipAddress, _status)
         this.smartBulbs = new ArrayList<SmartBulb>();
     }
 

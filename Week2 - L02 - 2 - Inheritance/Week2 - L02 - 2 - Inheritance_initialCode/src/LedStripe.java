@@ -1,10 +1,8 @@
-public class LedStripe {
+public class LedStripe extends SmartDevice {
 
     //private attributes
-    private String ipAddress;
-    private boolean status;
+
     private String colour;
-    private double consumptionToday; //inWatts
     private String type;
     private int dimmingLevel;
 
@@ -12,8 +10,7 @@ public class LedStripe {
 
     //constructor
     public LedStripe(String _ipAddress, boolean _status, String _colour, String _type) {
-        this.ipAddress = _ipAddress;
-        this.status = _status;
+        super(_ipAddress, _status);
         this.colour = _colour;
         this.type=_type; // "dimmable or notDimmable"
         this.dimmingLevel=100;
@@ -22,13 +19,6 @@ public class LedStripe {
 
 
     //getters and setters
-    public String getIpAddress() {
-        return ipAddress;
-    }
-
-    public void setIpAddress(String ipAddress) {
-        this.ipAddress = ipAddress;
-    }
 
     public String getColour() {
         return colour;
@@ -38,13 +28,6 @@ public class LedStripe {
         this.colour = colour;
     }
 
-    public boolean getStatus() {
-        return status;
-    }
-
-    public double getConsumptionToday() {
-        return Utils.getRandomConsumption();
-    }
 
     public LedStripe getNextLedStripe() {
         return this.nextLedStripe;
@@ -56,6 +39,7 @@ public class LedStripe {
     }
 
     //other methods
+    @Override
     public void turnOn() {
         this.status = true;
         System.out.println("The LedStripe at "+ this.ipAddress +" was turned on successfully");
@@ -65,6 +49,7 @@ public class LedStripe {
         }
     }
 
+    @Override
     public void turnOff() {
         this.status = false;
         System.out.println("The LedStripe at "+ this.ipAddress +" was turned off successfully");
@@ -88,7 +73,7 @@ public class LedStripe {
     }
 
     public void display() {
-        System.out.println("LedStripe  at " + this.ipAddress + " is on: " + this.status + ". Colour:" + this.colour + " Today's consumption: " + this.consumptionToday);
+        System.out.println("LedStripe  at " + super.getIpAddress() + " is on: " + super.getStatus() + ". Colour:" + this.colour + " Today's consumption: " + super.getConsumptionToday());
         this.nextLedStripe.display();
     }
 

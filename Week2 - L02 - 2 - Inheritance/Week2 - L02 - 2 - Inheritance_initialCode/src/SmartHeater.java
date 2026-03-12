@@ -1,9 +1,6 @@
-public class SmartHeater {
+public class SmartHeater extends SmartDevice {
 
     //private attributes
-    private String ipAddress;
-    private boolean status;
-    private double consumptionToday; //inWatts
     private boolean isTimerOn;
     private int timerMinutes;
 
@@ -11,23 +8,11 @@ public class SmartHeater {
 
     //constructor
     public SmartHeater(String _ipAddress, boolean _status) {
-        this.ipAddress = _ipAddress;
-        this.status = _status;
+        super(_ipAddress, _status);
 
     }
 
     //getters and setters
-    public String getIpAddress() {
-        return ipAddress;
-    }
-
-    public void setIpAddress(String ipAddress) {
-        this.ipAddress = ipAddress;
-    }
-
-    public boolean getStatus() {
-        return status;
-    }
 
     public int getTemperature() {
         return temperature;
@@ -37,13 +22,11 @@ public class SmartHeater {
         this.temperature = temperature;
     }
 
-    public double getConsumptionToday() {
-        return Utils.getRandomConsumption();
-    }
 
 
 
     //other methods
+
     public void turnOn(int _temperature) {
         this.status = true;
         this.temperature= _temperature;
@@ -78,6 +61,6 @@ public class SmartHeater {
 
 
     public void display() {
-        System.out.println("Heater at " + this.ipAddress + " is on: " + this.status + ". Temperature:" + this.temperature + ". Today's consumption: " + this.consumptionToday);
+        System.out.println("Heater at " + this.ipAddress + " is on: " + this.status + ". Temperature:" + this.temperature + ". Today's consumption: " + super.getConsumptionToday());
     }
 }
