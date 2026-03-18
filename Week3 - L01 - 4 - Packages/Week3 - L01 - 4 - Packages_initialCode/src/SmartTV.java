@@ -17,6 +17,7 @@ public class SmartTV extends SmartDevice{
     public void turnOff() {
         super.setStatus(false);
         System.out.println("The SmartTV at "+ super.getIpAddress() +" was turned OFF succesfully");
+        System.out.println("");
     }
 
     public void setTimer(int _minutes)
